@@ -7,12 +7,12 @@ config();
 const app = express();
 
 app.use(express.json());
-app.use('/api/jobs', router);
+app.use('/api/job', router);
 
 
 
 app.use((error, req, res, next) => {
-    res.status(error.status || 500).json({ status: "ERROR", message: error.message });
+    res.status(error.statusCode || 500).json({ status: error.status || "Error", message: error.message });
 })
 
 const port = process.env.PORT;

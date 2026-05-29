@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 const jobSchema = new mongoose.Schema({
     company: {
         type: String,
-        required: true
+        required: [true,"company can not be empty"]
     },
     position: {
         type: String,
-        required: true
+        required: [true,"position can not be empty"]
     },
     status: {
         type: String,
