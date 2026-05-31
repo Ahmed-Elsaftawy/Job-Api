@@ -2,8 +2,8 @@ import jwt from "jsonwebtoken";
 import { AppError } from "../utils/appError.js";
 
 const verifyToken = (req, res, next) => {
-    const token = req.headers['authorization'].split(' ')[1];
-    console.log(token);
+    const token = req.headers['authorization'] ? req.headers['authorization'].split(' ')[1] : "";
+
 
     if (!token) return next(new AppError("token is required", 'Failed', 401));
 

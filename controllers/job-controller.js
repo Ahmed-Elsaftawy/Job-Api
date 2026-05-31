@@ -47,13 +47,13 @@ const updatejob = asyncWrapper(async (req, res, next) => {
 
     res.status(200).json({ status: "Success", data: job });
 })
-const deletjob = asyncWrapper(async (req, res) => {
+const deletjob = asyncWrapper(async (req, res, next) => {
     const jobId = req.params.jobId;
     const job = await jobModel.findOneAndDelete({ _id: jobId });
     if (!job) {
         return next(new AppError("Not Found Job", "Field", 400));
     }
-    res.status(200).json({ status: "Success", message: "The Job Deleted Succesfully" });
+    res.status(200).json({ status: "Success", message: "The Job Is Deleted Succesfully" });
 })
 
 
